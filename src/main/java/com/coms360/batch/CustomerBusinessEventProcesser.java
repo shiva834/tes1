@@ -23,9 +23,9 @@ import com.google.gson.GsonBuilder;
 public class CustomerBusinessEventProcesser {
 	
 	//private static final String DB_CONNECTION = "jdbc:oracle:thin:@oradbq70:9270:crbqa101";
-	//private static final String DB_CONNECTION = "jdbc:oracle:thin:@172.21.102.41:9270:crbqa101";
+	private static final String DB_CONNECTION = "jdbc:oracle:thin:@172.21.102.41:9270:crbqa101";
 	
-	private static final String DB_CONNECTION = "jdbc:oracle:thin:@crbqa101.intranet.local:9270:crbqa101";
+	//private static final String DB_CONNECTION = "jdbc:oracle:thin:@crbqa101.intranet.local:9270:crbqa101";
 	
 	//private static final String DB_CONNECTION = "jdbc:oracle:thin:@oradbq70.intranet.local:9270:crbqa101";
 	//oradbq70.intranet.local
@@ -36,6 +36,13 @@ public class CustomerBusinessEventProcesser {
 	
 	private static final String DB_USER = "AIUGXJ3";
 	private static final String DB_PASSWORD = "welcome123";
+	
+	//private static final String DB_CONNECTION = "jdbc:oracle:thin:@oradbq70:9270:crbqa101";
+		//private static final String DB_CONNECTION = "jdbc:oracle:thin:@172.21.102.41:9270:crbqa101";
+		
+   //private static final String DB_CONNECTION = "jdbc:oracle:thin:@crbqa101.intranet.local:9270:crbqa101";
+		
+		//private static final String DB_CONNECTION = "jdbc:oracle:thin:@oradbq70.intranet.local:9270:crbqa101";
 	
     public static void main(String[] args) throws ClassNotFoundException, IOException {
     	Class.forName("oracle.jdbc.OracleDriver");
@@ -56,6 +63,7 @@ public class CustomerBusinessEventProcesser {
     	ArrayList<CustomerBusinessEvent> cbeList=new ArrayList<CustomerBusinessEvent>();
     	try (Connection con = DriverManager.getConnection(DB_CONNECTION, DB_USER,DB_PASSWORD);
     	         PreparedStatement ps = con.prepareStatement(sql)) {
+    		System.out.println("print connection information "+con);
     	        try (ResultSet rs = ps.executeQuery()) {
     	            while(rs.next()) {
     	            	CustomerBusinessEvent cbe= new CustomerBusinessEvent(rs.getString(1),rs.getString(2),rs.getString(3),"Campaign Management","NA","NA",
