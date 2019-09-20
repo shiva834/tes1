@@ -5,7 +5,7 @@
 	<artifactId>360comms</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>customer360</name>
+	<name>customer359</name>
 	<url>http://maven.apache.org</url>
 	<build>
 		<plugins>
